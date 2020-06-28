@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_course_minicamp_form_view">
+<field name="name">pr.course.minicamp.form.view</field>
+<field name="model">pr.course.minicamp</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+      <sheet>
+        <h2>Registro de Mini Campamento</h2>
+        <group>
+          <group>
+            <field name="name" required="1"/>
+            <field name="courseminicamp_id" options="{'no_create':True, 'no_open':True}" required="1"/>
+          </group>
+           <group>
+            <field name="description"/>  
+          </group>
+        </group>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_course_minicamp_tree_view">
+<field name="name">pr.course.minicamp.tree.view</field>
+<field name="model">pr.course.minicamp</field>
+<field name="arch" type="xml">
+  <tree>
+       <field name="name"/>
+        <field name="description"/>
+        <field name="courseminicamp_id" required="1"/>
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_course_minicamp">
+<field name="name">Registro de  Mini Campamento</field>
+<field name="res_model">pr.course.minicamp</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_minicamp" 
+		name="Registro de Mini Campamento" 
+		sequence="9"
+		action="action_course_minicamp"
+    parent="menu_courses_confi"/>
+ 
+  </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_practice_log_form_view">
+<field name="name">pr.practice.log.form.view</field>
+<field name="model">pr.practice.log</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+   <header>
+  
+    </header>
+      <sheet>
+        <h2>Registro de Practica Supervisada</h2>
+        <group>
+          <group>
+            <field name="name" required="1"/>
+            <field name="pr_courses_information" required="1"/>
+          </group>
+            <group>
+            <field name="description" required="1"/>
+          </group>
+        </group>
+          <field name="description" placeholder="Comentarios de diplomado"/>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_practice_log_tree_view" >
+<field name="name">pr.practice.log.tree.view</field>
+<field name="model">pr.practice.log</field>
+<field name="arch" type="xml">
+  <tree>
+      <field name="name"/>   
+      <field name="description" required="1"/>        
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_practice_log">
+<field name="name">Registro de Practica Supervisada</field>
+<field name="res_model">pr.practice.log</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_practica" 
+		name="Registro de Practica" 
+		sequence="6"
+		action="action_practice_log"
+    parent="menu_courses_confi"/>
+ 
+  </data>
+</odoo>

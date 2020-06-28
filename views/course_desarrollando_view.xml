@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_course_section_line_form_view">
+<field name="name">pr.course.section.line</field>
+<field name="model">pr.course.section.line</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+   <header>
+    	<button
+								name="" 
+				 				type="object" 
+				 				string="Borrador" 
+				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				class="oe_highlight"/>
+			 				<button
+				 				name="" 
+				 				type="object" 
+				 				string="Progreso" 
+				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				class="oe_highlight"/> 
+			 				<button
+			 				name="" 
+			 				type="object" 
+			 				string="Finalizado" 
+			 				attrs="{'invisible':[('state','in',('',''))]}"
+			 				class="oe_highlight"/>	
+        <field name="state" widget="statusbar"/>
+    </header>
+      <sheet>
+        <h2>Desarrollo de Curso</h2>
+        <group>
+          <group>
+          <field name="course_section_id"/>
+          <field name="course_information_id" options="{'no_create':True, 'no_open':True}"/>
+          <field name="instructor_id"/>
+          </group>
+           <group>
+             <field name="initial_date"/>
+              <field name="final_date"/>
+          </group>
+        </group>
+         <notebook>
+        <page string="Proyectos">
+          <field name="pr_course_section_line_ids">
+              <tree editable="top">
+                 <field name="member_id" options="{'no_create':True, 'no_open':True}"/>
+               <field name="pr_course_proyecto_id" options="{'no_create':True, 'no_open':True}"/>
+                <field name="description"/>
+              </tree>
+          </field>
+      </page>
+       <page string="Tareas">
+          <field name="course_section_line_ids">
+              <tree editable="top">
+                 <field name="member_id" options="{'no_create':True, 'no_open':True}"/>
+               <field name="pr_course_tarea" options="{'no_create':True, 'no_open':True}"/>
+               <field name="description"/>
+              </tree>
+          </field>
+      </page>
+        <page string="Asistencias">
+          <field name="as_course_section_line_ids">
+              <tree editable="top">
+                <field name="member_id" options="{'no_create':True, 'no_open':True}"/>
+                 <field name="initial_date" options="{'no_create':True, 'no_open':True}"/>
+                  <field name="final_date" options="{'no_create':True, 'no_open':True}"/>
+                  <field name="horario" options="{'no_create':True, 'no_open':True}"/>
+                  <field name="horario_fin" options="{'no_create':True, 'no_open':True}"/>
+                  <field name="asistencia" options="{'no_create':True, 'no_open':True}"/>
+                  
+              </tree>
+          </field>
+      </page>
+    </notebook>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_course_section_line_tree_view" >
+<field name="name">pr.course.section.line.tree.view</field>
+<field name="model">pr.course.section.line</field>
+<field name="arch" type="xml">
+  <tree>
+      <field name="course_section_id"/>        
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_curso_desa">
+<field name="name">Desarrollo de Curso</field>
+<field name="res_model">pr.course.section.line</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_curso_desa" 
+		name="Curso en desarrollo" 
+		sequence="5"
+		action="action_curso_desa"
+    parent="menu_courses_registro"/>
+ 
+  </data>
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_courses_registration_form_view">
+<field name="name">pr.courses.registration.form.view</field>
+<field name="model">pr.courses.registration</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+    <header>
+    	<button
+								name="set_state_draft" 
+				 				type="object" 
+				 				string="Borrador" 
+				 				states="done"
+				 				class="oe_highlight"/>
+			 				<button
+				 				name="set_state_canceled" 
+				 				type="object" 
+				 				string="Cancelar Inscripciòn" 
+				 				states="borrador"
+				 				class="oe_highlight"/> 
+
+			 				<button
+			 				name="set_state_done" 
+			 				type="object" 
+			 				string="Finalizado" 
+			 				states="borrador"
+			 				class="oe_highlight"/>	
+        <field name="state" widget="statusbar"/>
+    </header>
+      <sheet>
+         <h2>Inscripción</h2>
+        <group>
+          <group>
+            <field name="inscripcion"  options="{'no_create': True}" required="1"/>
+            <field name="date" required="1"/> 
+          </group>
+           <group>
+            <field name="course_section_id" options="{'no_create': True}" required="1"/>
+            <field 
+              name="pr_courses_information" domain="[('curso_taller', '=', inscripcion)]"/> 
+             <field name="ins_id"/>
+          </group>
+        </group>
+       <notebook>
+       <page string="Miembros">
+          <field name="member_ids"/>
+       </page>
+    </notebook>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_courses_registration_tree_view" >
+<field name="name">pr.courses.registration.tree.view</field>
+<field name="model">pr.courses.registration</field>
+<field name="arch" type="xml">
+  <tree>
+      <field name="inscripcion"/>    
+      <field name="date"/>   
+       <field name="ins_id"/>             
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_cursos_registro">
+<field name="name">Inscripción</field>
+<field name="res_model">pr.courses.registration</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_dl" 
+		name="Inscripción" 
+		sequence="1"
+		action="action_cursos_registro"
+    parent="menu_courses_registro"/>
+ 
+  </data>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_course_themes_form_view">
+<field name="name">pr.course.themes.form.view</field>
+<field name="model">pr.course.themes</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+      <sheet>
+        <h2>Registro de Temas</h2>
+        <group>
+          <group>
+            <field name="name" required="1"/>
+             <field name="course_themes_id" options="{'no_create':True, 'no_open':True}" required="1"/>
+          </group>
+           <group>
+            <field name="description"/>  
+          </group>
+        </group>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_course_themes_tree_view">
+<field name="name">pr.course.themes.tree.view</field>
+<field name="model">pr.course.themes</field>
+<field name="arch" type="xml">
+  <tree>
+       <field name="name"/>
+        <field name="description"/>
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_course_themes">
+<field name="name">Registro de Temas</field>
+<field name="res_model">pr.course.themes</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_themes" 
+		name="Registro de Temas" 
+		sequence="10"
+		action="action_course_themes"
+    parent="menu_courses_confi"/>
+ 
+  </data>
+</odoo>

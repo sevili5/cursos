@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+<record model="ir.ui.view" id="socio_cursos_form_view">
+    <field name="name">socio.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+    <field name="website" position="after">
+        <field name="numero_identidad"/>
+    </field>
+    <notebook position="inside">
+    <page string="Datos Generales" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
+    <group colspan="4">
+      <group cols="2"> 
+          <field name="fecha_cumple"/>
+          <field name="edad"/>
+      </group>
+      <group cols="2">
+          <field name="genero"/> 
+      </group>
+    </group> 
+    </page>
+    <page string="Perfiles" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
+    <group colspan="4">
+      <group cols="2"> 
+          <field name="es_socio"/>
+          <field name="es_instructor"/>
+           <field name="es_voluntario"/> 
+      </group>
+      <group cols="2">
+          <field name="es_miembro"/> 
+           <field name="es_aspirante"/> 
+            <field name="es_interesado"/> 
+      </group>
+    </group> 
+    </page>
+      <page string="Miembros" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
+    <group colspan="4">
+      <group cols="2"> 
+          <field name="inscripcion_ids"/>
+      </group>
+    </group> 
+    </page>
+
+    </notebook>
+  </field>
+</record>
+
+
+
+<record model="ir.actions.act_window" id="action_socio_cursos">
+<field name="name">Socios</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_socio','=',True)]</field>	
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+
+<record model="ir.actions.act_window" id="action_instructor_cursos">
+<field name="name">Instructores</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_instructor','=',True)]</field>  
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+<record model="ir.actions.act_window" id="action_voluntario_cursos">
+<field name="name">Voluntarios</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_voluntario','=',True)]</field>  
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+<record model="ir.actions.act_window" id="action_miembro_cursos">
+<field name="name">Miembro</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_miembro','=',True)]</field>  
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+
+<record model="ir.actions.act_window" id="action_interesado_cursos">
+<field name="name">Aspirantes a Incripción</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_interesado','=',True)]</field>  
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+
+<record model="ir.actions.act_window" id="action_aspirante_cursos">
+<field name="name">Aspirante Instructor</field>
+<field name="res_model">res.partner</field>
+<field name="view_type">form</field>
+<field name="view_model">kanban,tree,form</field>
+<field name="domain">[('es_aspirante','=',True)]</field>  
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Crear primer alumno</p>
+</field>
+</record>
+
+<menuitem name="Socios" id="menu_socios_cursos" parent="menu_courses_equipos" action="action_socio_cursos" sequence="1"/>
+<menuitem name="Instructor" id="menu_instructor_cursos" parent="menu_courses_equipos" action="action_instructor_cursos" sequence="2"/>
+<menuitem name="Voluntario" id="menu_voluntario_cursos" parent="menu_courses_equipos" action="action_voluntario_cursos" sequence="3"/>
+<menuitem name="Miembro" id="menu_miembro_cursos" parent="menu_courses_equipos" action="action_miembro_cursos" sequence="4"/>
+<menuitem name="Aspirante Inscripción" id="menu_interesado_cursos" parent="menu_courses_equipos" action="action_interesado_cursos" sequence="5"/>
+<menuitem name="Aspirante Instructor" id="menu_aspirante_cursos" parent="menu_courses_equipos" action="action_aspirante_cursos" sequence="6"/>
+
+</data>
+</odoo>
+
+

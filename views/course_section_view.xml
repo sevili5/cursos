@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_course_section_form_view">
+<field name="name">pr.course.section.form.view</field>
+<field name="model">pr.course.section</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+    <header>
+    	<button
+								name="" 
+				 				type="object" 
+				 				string="Borrador" 
+				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				class="oe_highlight"/>
+			 				<button
+				 				name="" 
+				 				type="object" 
+				 				string="Progreso" 
+				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				class="oe_highlight"/> 
+			 				<button
+			 				name="" 
+			 				type="object" 
+			 				string="Finalizado" 
+			 				attrs="{'invisible':[('state','in',('',''))]}"
+			 				class="oe_highlight"/>	
+        <field name="state" widget="statusbar"/>
+    </header>
+      <sheet>
+         <h2>Registro de Secciónes</h2>
+        <group>
+          <group>
+            <field name="name" required="1"/>
+          <field name="initial_date" required="1"/>
+          </group>
+            <group>
+            <field name="active" required="1"/>
+            <field name="final_date" required="1"/>
+          </group>
+        </group>
+      <notebook>
+        <page string="Horarios">
+          <field name="pr_course_section_ids">
+              <tree editable="top">
+                <field name="pr_course_horarios_id" options="{'no_create':True, 'no_open':True}" required="1"/>
+                <field name="horario" widget="float_time"/>
+                <field name="horario_fin" widget="float_time"/>
+              </tree>
+          </field>
+      </page>
+      <page string="Curso/Taller">
+          <field name="curso_taller_ids">
+              <tree editable="top">
+                <field name="course_information_id" options="{'no_create':True, 'no_open':True}"/>
+                <field name="initial_date"/>
+                <field name="final_date"/>
+                <field name="instructor_id" options="{'no_create':True, 'no_open':True}"/>
+                <field name="instructor_course_id" domain="[('es_aspirante', '=', True)]" options="{'no_create':True, 'no_open':True}"/>
+              </tree>
+          </field>
+      </page>
+        <page string="Miembros">
+          <field name="partner_ids"/>
+       </page>
+    </notebook>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_course_section_tree_view" >
+<field name="name">pr.course.section.tree.view</field>
+<field name="model">pr.course.section</field>
+<field name="arch" type="xml">
+  <tree>
+      <field name="name"/>    
+      <field name="initial_date"/>
+      <field name="final_date"/>       
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_course_section">
+<field name="name">Registro de Secciones</field>
+<field name="res_model">pr.course.section</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_seccion" 
+		name="Registro de  Secciones" 
+		sequence="5"
+		action="action_course_section"
+    parent="menu_courses_confi"/>
+ 
+  </data>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<menuitem id="menu_courses_root" 
+		name="Gestión Cursos" 
+		sequence="1"
+		web_icon="curso,static/description/icon.png"/>
+
+	<menuitem id="menu_courses_registro" 
+		name="Gestión de Diplomado" 
+		sequence="1"
+		parent="menu_courses_root"/>
+
+	<menuitem id="menu_courses_equipos" 
+		name="Gestión de Miembros" 
+		sequence="12"
+		parent="menu_courses_root"/>
+
+	
+	<menuitem id="menu_courses_confi" 
+		name="Configuración" 
+		sequence="15"
+		parent="menu_courses_root"/>
+	
+</odoo>

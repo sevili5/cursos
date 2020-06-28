@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+   <!-- Vista Formulario de Cursos-->
+<record model="ir.ui.view" id="pr_courses_information_form_view">
+<field name="name">pr.courses.information.form.view</field>
+<field name="model">pr.courses.information</field>
+<field name="arch" type="xml">
+  <form string="Principal">
+      <sheet>
+          <h2>Registro de Curso/Taller</h2>
+        <group>	
+          <group>
+           <field name="curso_taller" required="1"/>
+            <field name="name" required="1"/>
+            <field name="diplomado_id" required="1" options="{'no_create':True, 'no_open':True}"/>
+            <field name="N_sesiones" required="1" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}"/>
+          </group>
+           <group>
+            <field name="active"  required="1 "/>
+            <field name="description" required="1"/> 
+             <field name="costo" required="1"/> 
+          </group>
+        </group>   
+	  <notebook>
+      <page string="Temas" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+          <field name="course_themes_ids">
+              <tree editable="top">
+               <field name="name"/>
+                <field name="description"/>
+              </tree>
+          </field>
+      </page>
+     <page string="Practica" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+          <field name="practice_log_ids">
+              <tree editable="top">
+                <field name="practice_log_id" options="{'no_create':True, 'no_open':True}"/>
+                <field name="name"/>
+                <field name="initial_date" required="1"/>
+                <field name="final_date" required="1"/>
+                     <field name="parent_id"/>
+              </tree>
+          </field>
+      </page>
+        <page string="MiniCampamento" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+          <field name="course_minicamp_ids">
+              <tree editable="top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="initial_date" required="1"/>
+                <field name="final_date" required="1"/>
+              </tree>
+          </field>
+      </page> 
+    </notebook>
+      </sheet>
+  </form>
+</field>
+</record>
+
+<!-- Vista Tree de Curso--> 
+<record model="ir.ui.view" id="pr_courses_information_tree_view" >
+<field name="name">pr.courses.information.tree.view</field>
+<field name="model">pr.courses.information</field>
+<field name="arch" type="xml">
+  <tree>
+      <field name="name"/> 
+      <field name="diplomado_id" required="1"/>
+      <field name="description" required="1"/>    
+      <field name="active" required="1"/>
+          
+  </tree>
+</field>      
+</record>
+
+   <!--  Accion para Cursos -->
+<record model="ir.actions.act_window" id="action_cursos_information">
+<field name="name">Registro de Curso/Taller</field>
+<field name="res_model">pr.courses.information</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+<field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+        Click para crear un nuevo registro.
+    </p>
+</field>    
+</record>
+
+
+<menuitem id="menu_registro_cursos" 
+		name="Registro de Curso/Taller" 
+		sequence="3"
+		action="action_cursos_information"
+    parent="menu_courses_confi"/>
+ 
+  </data>
+</odoo>
