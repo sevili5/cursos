@@ -8,7 +8,7 @@
 <field name="arch" type="xml">
   <form string="Principal">
       <sheet>
-          <h2>Registro de Curso/Taller</h2>
+          <h2>Planificación de Eventos</h2>
         <group>	
           <group>
            <field name="curso_taller" required="1"/>
@@ -23,7 +23,7 @@
           </group>
         </group>   
 	  <notebook>
-      <page string="Temas" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+      <page string="Temas">
           <field name="course_themes_ids">
               <tree editable="top">
                <field name="name"/>
@@ -31,7 +31,7 @@
               </tree>
           </field>
       </page>
-     <page string="Practica" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+     <page string="Practica">
           <field name="practice_log_ids">
               <tree editable="top">
                 <field name="practice_log_id" options="{'no_create':True, 'no_open':True}"/>
@@ -42,7 +42,7 @@
               </tree>
           </field>
       </page>
-        <page string="MiniCampamento" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}">
+        <page string="MiniCampamento">
           <field name="course_minicamp_ids">
               <tree editable="top">
                 <field name="name"/>
@@ -75,7 +75,7 @@
 
    <!--  Accion para Cursos -->
 <record model="ir.actions.act_window" id="action_cursos_information">
-<field name="name">Registro de Curso/Taller</field>
+<field name="name">Planificación de Eventos</field>
 <field name="res_model">pr.courses.information</field>
 <field name="view_type">form</field>
 <field name="view_mode">tree,form</field>
@@ -88,7 +88,7 @@
 
 
 <menuitem id="menu_registro_cursos" 
-		name="Registro de Curso/Taller" 
+		name="Planificación de Eventos" 
 		sequence="3"
 		action="action_cursos_information"
     parent="menu_courses_confi"/>

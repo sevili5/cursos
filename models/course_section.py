@@ -10,15 +10,18 @@ class Course_Section(models.Model):
 	name = fields.Char("Nombre")
 	initial_date= fields.Date("Fecha Inicial") 
 	final_date = fields.Date("Fecha Final")
-	curso_taller_ids = fields.One2many("pr.course.section.line", "course_section_id", "Secciòn")
-	diplomado_id = fields.Many2one("pr.diploma.registration", "Diplomado")
-	state = fields.Selection([('borrador', 'Borrador'), ('progreso', 'Progreso'), ('done', 'Finalizado')], string="Estado", default="borrador")
+	state = fields.Selection([('borrador', 'Borrador'), ('canceled', 'Cancelado'), ('done', 'Finalizado')], string="Estado", default="borrador")
 	lugar = fields.Char("Lugar que se imparte")
-	pr_courses_workshops_ids = fields.One2many("pr.courses.workshops", "pr_course_section_id", "pr_courses_workshops_ids")
-	pr_course_taller_line_ids = fields.One2many("pr.course.taller.line", "course_section_id", "pr_course_taller_line_ids")
 	active = fields.Boolean("Activo", default=False)
+
+	#Many2one
+	diplomado_id = fields.Many2one("pr.diploma.registration", "Diplomado")
+	#One2many
+	curso_taller_ids = fields.One2many("pr.course.section.line", "course_section_id", "curso_taller_ids")
 	pr_course_section_ids = fields.One2many("pr.course.horario.line", "pr_course_section_id", "Cursos")
+	#Many2many
 	partner_ids = fields.Many2many("res.partner", string="Miembros")	
+
 
 	
 
@@ -29,25 +32,10 @@ class Course_Section_Line(models.Model):
 	initial_date= fields.Date("Fecha de Inicio") 
 	final_date = fields.Date("Fecha Final")
 	course_section_id = fields.Many2one("pr.course.section", "Seccion")
-	course_information_id = fields.Many2one("pr.courses.information", "Curso/Taller")
+	course_information_id = fields.Many2one("pr.courses.information", "Tipo de Eventos")
 	instructor_course_id = fields.Many2one("res.partner", "Aspirante")
 	instructor_id = fields.Many2one("res.users", "Instructor")
-
 	
-	
-	
-class Course_Taller_Line(models.Model):
-	_name = "pr.course.taller.line"
-	
-	
-	course_section_id = fields.Many2one("pr.course.section", "Seccion")
-	pr_courses_workshops_id = fields.Many2one("pr.courses.workshops", "Taller")
-	initial_date= fields.Date("Fecha de Inicio") 
-	final_date = fields.Date("Fecha Final")
-	instructo_course_id = fields.Many2one("res.partner", "Instructor")
-	instructor_id = fields.Many2one("res.users", "Instructor")
-	
-
 class Course_Horario_Line(models.Model):
 	_name = "pr.course.horario.line"
 	

@@ -8,7 +8,7 @@
 <field name="arch" type="xml">
   <form string="Principal">
       <sheet>
-        <h2>Registro de Diplomado</h2>
+        <h2>Diplomado</h2>
         <group>
           <group>
             <field name="name" required="1"/>
@@ -19,7 +19,7 @@
           </group>
         </group>
       <notebook>
-      <page string="Cursos/Taller">
+      <page string="Planificación de Eventos">
           <field name="course_information_ids">
               <tree editable="top">
                 <field name="curso_taller"/>
@@ -49,7 +49,7 @@
 
    <!--  Accion para Cursos -->
 <record model="ir.actions.act_window" id="action_diploma_registration">
-<field name="name">Registro de Diplomado</field>
+<field name="name">Diplomado</field>
 <field name="res_model">pr.diploma.registration</field>
 <field name="view_type">form</field>
 <field name="view_mode">tree,form</field>
@@ -62,7 +62,7 @@
 
 
 <menuitem id="menu_diploma_registration" 
-		name="Registro de Diplomado" 
+		name="Diplomado" 
 		sequence="1"
 		action="action_diploma_registration"
     parent="menu_courses_confi"/>

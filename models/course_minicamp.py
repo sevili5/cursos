@@ -7,10 +7,12 @@ class Course_MiniCamp(models.Model):
 
 	name = fields.Char("Nombre")
 	description = fields.Text("Descripción del Mini Campamento")
-	courseminicamp_id = fields.Many2one("pr.courses.information", "Curso")
-	minicam_id = fields.Many2one("pr.course.section", "Seccion")
 	initial_date= fields.Date("Fecha de Inicio")
 	final_date = fields.Date("Fecha Final")
+	#Many2one
+	courseminicamp_id = fields.Many2one("pr.courses.information", "Curso")
+	minicam_id = fields.Many2one("pr.course.section", "Seccion")
+	
 
 
 

@@ -9,27 +9,28 @@
   <form string="Principal">
     <header>
     	<button
-								name="" 
+								name="set_state_draft" 
 				 				type="object" 
 				 				string="Borrador" 
-				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				states="done"
 				 				class="oe_highlight"/>
 			 				<button
-				 				name="" 
+				 				name="set_state_canceled" 
 				 				type="object" 
-				 				string="Progreso" 
-				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				string="Cancelar Inscripción" 
+				 				states="borrador"
 				 				class="oe_highlight"/> 
+
 			 				<button
-			 				name="" 
+			 				name="set_state_done" 
 			 				type="object" 
 			 				string="Finalizado" 
-			 				attrs="{'invisible':[('state','in',('',''))]}"
+			 				states="borrador"
 			 				class="oe_highlight"/>	
         <field name="state" widget="statusbar"/>
     </header>
       <sheet>
-         <h2>Registro de Secciónes</h2>
+         <h2>Secciónes</h2>
         <group>
           <group>
             <field name="name" required="1"/>
@@ -41,16 +42,7 @@
           </group>
         </group>
       <notebook>
-        <page string="Horarios">
-          <field name="pr_course_section_ids">
-              <tree editable="top">
-                <field name="pr_course_horarios_id" options="{'no_create':True, 'no_open':True}" required="1"/>
-                <field name="horario" widget="float_time"/>
-                <field name="horario_fin" widget="float_time"/>
-              </tree>
-          </field>
-      </page>
-      <page string="Curso/Taller">
+       <page string="Tipo de Evento">
           <field name="curso_taller_ids">
               <tree editable="top">
                 <field name="course_information_id" options="{'no_create':True, 'no_open':True}"/>
@@ -64,6 +56,15 @@
         <page string="Miembros">
           <field name="partner_ids"/>
        </page>
+        <page string="Horarios">
+          <field name="pr_course_section_ids">
+              <tree editable="top">
+                <field name="pr_course_horarios_id" options="{'no_create':True, 'no_open':True}" required="1"/>
+                <field name="horario" widget="float_time"/>
+                <field name="horario_fin" widget="float_time"/>
+              </tree>
+          </field>
+      </page>
     </notebook>
       </sheet>
   </form>
@@ -85,7 +86,7 @@
 
    <!--  Accion para Cursos -->
 <record model="ir.actions.act_window" id="action_course_section">
-<field name="name">Registro de Secciones</field>
+<field name="name">Secciónes</field>
 <field name="res_model">pr.course.section</field>
 <field name="view_type">form</field>
 <field name="view_mode">tree,form</field>
@@ -98,7 +99,7 @@
 
 
 <menuitem id="menu_registro_seccion" 
-		name="Registro de  Secciones" 
+		name="Secciónes" 
 		sequence="5"
 		action="action_course_section"
     parent="menu_courses_confi"/>

@@ -8,7 +8,7 @@
 <field name="arch" type="xml">
   <form string="Principal">
       <sheet>
-        <h2>Registro de Mini Campamento</h2>
+        <h2>Mini Campamento</h2>
         <group>
           <group>
             <field name="name" required="1"/>
@@ -38,7 +38,7 @@
 
    <!--  Accion para Cursos -->
 <record model="ir.actions.act_window" id="action_course_minicamp">
-<field name="name">Registro de  Mini Campamento</field>
+<field name="name">Mini Campamento</field>
 <field name="res_model">pr.course.minicamp</field>
 <field name="view_type">form</field>
 <field name="view_mode">tree,form</field>
@@ -51,7 +51,7 @@
 
 
 <menuitem id="menu_registro_minicamp" 
-		name="Registro de Mini Campamento" 
+		name="Mini Campamento" 
 		sequence="9"
 		action="action_course_minicamp"
     parent="menu_courses_confi"/>

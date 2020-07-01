@@ -9,27 +9,28 @@
   <form string="Principal">
    <header>
     	<button
-								name="" 
+								name="set_state_draft" 
 				 				type="object" 
 				 				string="Borrador" 
-				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				states="done"
 				 				class="oe_highlight"/>
 			 				<button
-				 				name="" 
+				 				name="set_state_canceled" 
 				 				type="object" 
-				 				string="Progreso" 
-				 				attrs="{'invisible':[('state','in',('',''))]}"
+				 				string="Cancelar Inscripciòn" 
+				 				states="borrador"
 				 				class="oe_highlight"/> 
+
 			 				<button
-			 				name="" 
+			 				name="set_state_done" 
 			 				type="object" 
 			 				string="Finalizado" 
-			 				attrs="{'invisible':[('state','in',('',''))]}"
+			 				states="borrador"
 			 				class="oe_highlight"/>	
         <field name="state" widget="statusbar"/>
     </header>
       <sheet>
-        <h2>Desarrollo de Curso</h2>
+        <h2>Desarrollo de Eventos</h2>
         <group>
           <group>
           <field name="course_section_id"/>
@@ -37,8 +38,6 @@
           <field name="instructor_id"/>
           </group>
            <group>
-             <field name="initial_date"/>
-              <field name="final_date"/>
           </group>
         </group>
          <notebook>
@@ -85,14 +84,15 @@
 <field name="model">pr.course.section.line</field>
 <field name="arch" type="xml">
   <tree>
-      <field name="course_section_id"/>        
+      <field name="course_section_id"/>   
+      <field name="course_information_id"/>      
   </tree>
 </field>      
 </record>
 
    <!--  Accion para Cursos -->
 <record model="ir.actions.act_window" id="action_curso_desa">
-<field name="name">Desarrollo de Curso</field>
+<field name="name">Desarrollo de Eventos</field>
 <field name="res_model">pr.course.section.line</field>
 <field name="view_type">form</field>
 <field name="view_mode">tree,form</field>
@@ -105,7 +105,7 @@
 
 
 <menuitem id="menu_curso_desa" 
-		name="Curso en desarrollo" 
+		name="Desarrollo de Eventos" 
 		sequence="5"
 		action="action_curso_desa"
     parent="menu_courses_registro"/>

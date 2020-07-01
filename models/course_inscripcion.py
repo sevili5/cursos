@@ -5,17 +5,19 @@ class Course_Registration(models.Model):
 	_name = "pr.courses.registration"
 	_rec_name = "pr_courses_information_id"
 	
-	pr_courses_information_id = fields.Many2one("pr.courses.information", "Curso")
-	course_section_id = fields.Many2one("pr.course.section", "Seccion")
+
 	state = fields.Selection([('borrador', 'Borrador'), ('canceled', 'Cancelado'), ('done', 'Finalizado')], string="Estado", default="borrador")
 	date= fields.Date("Fecha de Inscripción")
 	active = fields.Boolean("Activo", default=True)
 	inscripcion = fields.Selection([('curso', 'Curso'), ('taller', 'Taller'), ('otros', 'Otros Eventos')], string="Inscripcion")
-	pr_courses_information = fields.Many2one("pr.courses.information", "Curso")
+	#Many2one
+	pr_courses_information = fields.Many2one("pr.courses.information", "Eventos")
 	pr_courses_workshops = fields.Many2one("pr.courses.workshops", "Taller")
 	member_ids = fields.Many2many("res.partner", "tabla_relacion_inscripcion_miembro", "inscripcion_id", "miembro_id", "Miembros")
 	ins_id = fields.Many2one("res.users", "Instructor")
-	
+	pr_courses_information_id = fields.Many2one("pr.courses.information", "Curso")
+	course_section_id = fields.Many2one("pr.course.section", "Seccion")
+
 
 	@api.onchange("course_section_id")
 	def onchange_section(self):
