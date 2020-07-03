@@ -13,6 +13,7 @@
     <page string="Datos Generales" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
     <group colspan="4">
       <group cols="2"> 
+          <field name="codigo"/>
           <field name="fecha_cumple"/>
           <field name="edad"/>
       </group>
@@ -38,7 +39,6 @@
       <page string="Miembros" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
     <group colspan="4">
       <group cols="2"> 
-          <field name="inscripcion_ids"/>
       </group>
     </group> 
     </page>

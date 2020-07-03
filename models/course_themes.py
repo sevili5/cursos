@@ -7,7 +7,7 @@ class Course_Themes(models.Model):
 
 	name = fields.Char("Nombre")
 	description = fields.Text("Descripción")
-	course_themes_id = fields.Many2one("pr.courses.information","Curso")
+	course_themes_id = fields.Many2one("pr.courses.information","Eventos")
 
 
 	

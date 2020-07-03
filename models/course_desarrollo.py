@@ -4,6 +4,8 @@ from odoo import models, fields, api
 
 class Course_Desarrollo(models.Model):
 	_name = "pr.course.section.line"
+	_rec_name = "course_section_id"
+
 
 	initial_date= fields.Date("Fecha de Inicio") 
 	final_date = fields.Date("Fecha Final")

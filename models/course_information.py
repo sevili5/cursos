@@ -50,7 +50,7 @@ class Practice_Log(models.Model):
 	state = fields.Selection([('borrador', 'Borrador'), ('progreso', 'Progreso'), ('done', 'Finalizado')], string="Estado", default="borrador")
 	#Many2one
 	perfil_miembro_id = fields.Many2one("pr.course.perfil.miembro", "PerfilMiembro")
-	pr_courses_information = fields.Many2one("pr.courses.information", "Curso")
+	pr_courses_information = fields.Many2one("pr.courses.information", "Eventos")
 
 	
 	

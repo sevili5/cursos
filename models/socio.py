@@ -21,6 +21,7 @@ class Socios(models.Model):
     edad = fields.Integer("Edad")
     pr_cursos_miembros = fields.Many2one("pr.cursos.miembros", "Curso Miembros")
     inscripcion_ids = fields.Many2many("pr.courses.registration", "tabla_relacion_inscripcion_miembro", "miembro_id", "inscripcion_id", "Miembros")
+    codigo = fields.Integer("Codigo")
 
     @api.depends("fecha_cumple")
     def calcular_edad(self):
