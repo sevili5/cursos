@@ -13,7 +13,7 @@
           <group>
            <field name="curso_taller" required="1"/>
             <field name="name" required="1"/>
-            <field name="diplomado_id" required="1" options="{'no_create':True, 'no_open':True}"/>
+            <field name="diplomado_id"  options="{'no_create':True, 'no_open':True}"/>
             <field name="N_sesiones" required="1" attrs = "{'invisible': [('curso_taller', '!=', 'curso')]}"/>
           </group>
            <group>

@@ -27,7 +27,6 @@ class Course_Registration(models.Model):
 				self.ins_id = course.instructor_id.id
 
 
-
 	@api.multi
 	def set_state_done(self):
 		if self.member_ids:

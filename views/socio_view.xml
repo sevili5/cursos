@@ -39,6 +39,7 @@
       <page string="Miembros" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
     <group colspan="4">
       <group cols="2"> 
+       <field name="inscripcion_ids"/> 
       </group>
     </group> 
     </page>

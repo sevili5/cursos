@@ -24,8 +24,24 @@ class Course_Desarrollo(models.Model):
 	def onchange_section(self):
 		if self.course_section_id:
 			for course in self.course_section_id.curso_taller_ids:
-				self.pr_courses_information = course.course_information_id.id
+				self.course_information_id = course.course_information_id.id
 				self.instructor_id = course.instructor_id.id
+
+	
+
+	@api.multi
+	def set_state_done(self):
+		self.write({'state': 'done'})
+
+
+	@api.multi
+	def set_state_draft(self):
+		self.write({'state': 'borrador'})
+
+
+	@api.multi
+	def set_state_canceled(self):
+		self.write({'state': 'canceled'})
 
 
 class Course_Instructor_Proyecto(models.Model):

@@ -20,7 +20,7 @@ class Socios(models.Model):
     es_interesado = fields.Boolean("Asptantes Inscripción")
     edad = fields.Integer("Edad")
     pr_cursos_miembros = fields.Many2one("pr.cursos.miembros", "Curso Miembros")
-    inscripcion_ids = fields.Many2many("pr.courses.registration", "tabla_relacion_inscripcion_miembro", "miembro_id", "inscripcion_id", "Miembros")
+    inscripcion_ids = fields.Many2many("pr.courses.registration", "tabla_relacion_inscripcion_miembro", "miembro_id", "inscripcion_id", string='Miembros')
     codigo = fields.Integer("Codigo")
 
     @api.depends("fecha_cumple")
@@ -31,11 +31,4 @@ class Socios(models.Model):
                 hoy = (datetime.strptime(fecha_hoy, '%Y-%m-%d'))
                 edad = hoy.year - datetime.strptime(self.fecha_cumple, '%Y-%m-%d').year
                 self.edad = edad
-
-
-
-   
-
-
-    
 

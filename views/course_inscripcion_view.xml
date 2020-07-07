@@ -12,20 +12,20 @@
 								name="set_state_draft" 
 				 				type="object" 
 				 				string="Borrador" 
-				 				states="done"
+				 				states="borrador"
 				 				class="oe_highlight"/>
 			 				<button
 				 				name="set_state_canceled" 
 				 				type="object" 
 				 				string="Cancelar Inscripciòn" 
-				 				states="borrador"
+				 				states="done"
 				 				class="oe_highlight"/> 
 
 			 				<button
 			 				name="set_state_done" 
 			 				type="object" 
 			 				string="Finalizado" 
-			 				states="borrador"
+			 				states="borrador,canceled"
 			 				class="oe_highlight"/>	
         <field name="state" widget="statusbar"/>
     </header>
@@ -33,12 +33,12 @@
          <h2>Inscripción</h2>
         <group>
           <group>
-            <field name="date" required="1"/> 
+            <field name="date" attrs="{'readonly': [('state','!=','borrador')]}"  required="1"/> 
           </group>
            <group>
-            <field name="course_section_id" options="{'no_create':True, 'no_open':True}" required="1"/>
-            <field  name="pr_courses_information" options="{'no_create':True, 'no_open':True}" required="1"/> 
-             <field name="ins_id" options="{'no_create':True, 'no_open':True}" required="1"/>
+            <field name="course_section_id" attrs="{'readonly': [('state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}" required="1"/>
+            <field  name="pr_courses_information" attrs="{'readonly': [('state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}" required="1"/> 
+             <field name="ins_id" attrs="{'readonly': [('state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}" required="1"/>
           </group>
         </group>
        <notebook>
@@ -57,9 +57,10 @@
 <field name="model">pr.courses.registration</field>
 <field name="arch" type="xml">
   <tree>
-      <field name="inscripcion"/>    
+      <field name="pr_courses_information"/>    
       <field name="date"/>   
-       <field name="ins_id"/>             
+       <field name="course_section_id"/> 
+        <field name="ins_id"/>                 
   </tree>
 </field>      
 </record>
