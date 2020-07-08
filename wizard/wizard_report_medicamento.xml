@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<record id="clinica_diadema_report_medicamento_wizard_view_form" model="ir.ui.view">
+  <field name="name">clinica.diadema.report.medicamento.wizard.view.form</field>
+  <field name="model">clinica.diadema.report.medicamento.wizard</field>
+  <field name="type">form</field>
+  <field name="arch" type="xml">
+    <form string="Medicamento">
+      <sheet>
+        <separator string="Medicamento"/>
+          <notebook>
+            <page string="Medicamentos">
+              <field name="wizard_report_detail_ids">
+                <tree editable="bottom">
+                  <field name="medicine_report_id" options="{'no_create':True}"/>
+                  <field name="medical_presentation_report_id" options="{'no_create':True}"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+          <footer>
+            <button name="Medicamento" string="Ingresar" type="object" class="oe_highlight"/>
+            <button class="oe_highlight" special="cancel" string="Cancel"/> 
+          </footer>
+      </sheet>
+    </form>
+  </field>
+</record>
+
+<record model="ir.actions.act_window" id="wizard_agregar_action">
+  <field name="name">Medicamento</field>
+  <field name="res_model">clinica.diadema.report.medicamento.wizard</field>
+  <field name="view_type">form</field>
+  <field name="view_mode">form</field>
+  <field name="view_id" ref="clinica_diadema_report_medicamento_wizard_view_form"/>
+  <field name="target">new</field>
+</record>
+</odoo>
+</data>
+</odoo>

@@ -20,11 +20,10 @@ class Course_Section(models.Model):
 	curso_taller_ids = fields.One2many("pr.course.section.line", "course_section_id", "curso_taller_ids")
 	pr_course_section_ids = fields.One2many("pr.course.horario.line", "pr_course_section_id", "Cursos")
 	#Many2many
-	partner_ids = fields.Many2many("res.partner", string="Miembros")	
-
-
+	partner_ids = fields.Many2many("res.partner", string="Miembros")
+	partne_ids = fields.Many2many("res.partner", "tabla_seccion", "seccion_id", "partner_id", "Seccion")
+	#partne_ids = fields.Many2many("res.partner", string="Seccion")
 	
-
 	
 class Course_Section_Line(models.Model):
 	_name = "pr.course.section.line"

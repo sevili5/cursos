@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<record id="clinica_diadema_agregar_medicamento_wizard_view_form" model="ir.ui.view">
+  <field name="name">clinica.diadema.agregar.medicamento.wizard.view.form</field>
+  <field name="model">clinica.diadema.agregar.medicamento.wizard</field>
+  <field name="type">form</field>
+  <field name="arch" type="xml">
+    <form string="Agregar Medicamento">
+      <sheet>
+        <separator string="Agregar Medicamento"/>
+          <group>
+            <group>
+              <field name="sicklnes_id"/>
+            </group>
+            <group>
+            </group>
+          </group>
+          <notebook>
+            <page string="Medicamentos">
+              <field name="wizard_agregar_detail_ids">
+                <tree editable="bottom">
+                  <field name="medicine_agregar_id" options="{'no_create':True}"/>
+                  <field name="medical_presentation_agregar_id" options="{'no_create':True}"/>
+                  <field name="cantidad_agregar" options="{'no_create':True}"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+          <footer>
+            <button name="agregar_medicamento" string="Ingresar" type="object" class="oe_highlight"/>
+            <button class="oe_highlight" special="cancel" string="Cancel"/> 
+          </footer>
+      </sheet>
+    </form>
+  </field>
+</record>
+
+<record model="ir.actions.act_window" id="wizard_agregar_action">
+  <field name="name">Agregar Medicamento</field>
+  <field name="res_model">clinica.diadema.agregar.medicamento.wizard</field>
+  <field name="view_type">form</field>
+  <field name="view_mode">form</field>
+  <field name="view_id" ref="clinica_diadema_agregar_medicamento_wizard_view_form"/>
+  <field name="target">new</field>
+</record>
+</data>
+</odoo>

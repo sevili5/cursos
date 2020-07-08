@@ -13,12 +13,14 @@ class Course_Registration(models.Model):
 	#Many2one
 	pr_courses_information = fields.Many2one("pr.courses.information", "Eventos")
 	pr_courses_workshops = fields.Many2one("pr.courses.workshops", "Taller")
-	member_ids = fields.Many2many("res.partner", "tabla_relacion_inscripcion_miembro", "inscripcion_id", "miembro_id", "Miembros")
 	ins_id = fields.Many2one("res.users", "Instructor")
 	pr_courses_information_id = fields.Many2one("pr.courses.information", "Curso")
 	course_section_id = fields.Many2one("pr.course.section", "Seccion")
+	#Many2many
+	member_ids = fields.Many2many("res.partner", "tabla_relacion_inscripcion_miembro", "inscripcion_id", "miembro_id", "Miembros")
 
-
+	
+	
 	@api.onchange("course_section_id")
 	def onchange_section(self):
 		if self.course_section_id:

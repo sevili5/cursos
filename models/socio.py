@@ -19,9 +19,13 @@ class Socios(models.Model):
     es_aspirante = fields.Boolean("Es Aspirante Instructor")
     es_interesado = fields.Boolean("Asptantes Inscripción")
     edad = fields.Integer("Edad")
+    codigo = fields.Integer("Codigo")
+    
+    #Many2many
     pr_cursos_miembros = fields.Many2one("pr.cursos.miembros", "Curso Miembros")
     inscripcion_ids = fields.Many2many("pr.courses.registration", "tabla_relacion_inscripcion_miembro", "miembro_id", "inscripcion_id", string='Miembros')
-    codigo = fields.Integer("Codigo")
+    seccion_ids = fields.Many2many("pr.course.section", "tabla_seccion", "partner_id", "seccion_id", "Seccion")
+     #seccion_ids = fields.Many2many("pr.course.section", "Seccion")
 
     @api.depends("fecha_cumple")
     def calcular_edad(self):
