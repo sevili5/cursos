@@ -19,7 +19,8 @@ class Course_Registration(models.Model):
 	#Many2many
 	member_ids = fields.Many2many("res.partner", "tabla_relacion_inscripcion_miembro", "inscripcion_id", "miembro_id", "Miembros")
 
-	
+
+        
 	
 	@api.onchange("course_section_id")
 	def onchange_section(self):

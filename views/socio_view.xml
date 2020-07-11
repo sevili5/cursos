@@ -39,6 +39,9 @@
       <page string="Miembros" sequence="0" attrs="{'invisible': [('supplier', '=', True)]}" autofocus="autofocus">
     <field name="inscripcion_ids"/>
     </page>
+     <page string="seccion">
+          <field name="seccion_ids"/>
+       </page>
     </notebook>
   </field>
 </record>

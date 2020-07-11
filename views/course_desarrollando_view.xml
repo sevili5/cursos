@@ -12,7 +12,7 @@
 								name="set_state_draft" 
 				 				type="object" 
 				 				string="Borrador" 
-				 				states="borrador,done,canceled"
+				 				states="borrador,canceled"
 				 				class="oe_highlight"/>
 			 				<button
 				 				name="set_state_canceled" 
@@ -64,7 +64,6 @@
               <tree editable="top">
                 <field name="member_id" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
                  <field name="initial_date" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
-                  <field name="final_date" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
                   <field name="horario" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
                   <field name="horario_fin" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
                   <field name="asistencia" attrs="{'readonly': [('parent.state','!=','borrador')]}" options="{'no_create':True, 'no_open':True}"/>
